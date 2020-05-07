@@ -1,0 +1,38 @@
+version: "3"
+services:
+  web:
+    build: .
+    ports:
+      - 8080:8080
+    environment:
+      ENVIRONMENT: DOCKER
+    links:
+      - mongodb
+      - selenium-hub
+  mongodb:
+    image: mongo
+    container_name: "mongodb"
+    ports:
+      - 27017:27017
+
+  selenium-hub:
+    image: selenium/hub
+    container_name: selenium-hub
+    ports:
+      - 4444:4444
+
+  firefox:
+    image: selenium/node-firefox
+    volumes:
+      - /dev/shm:/dev/shm
+    depends_on:
+      - selenium-hub
+    environment:
+      - HUB_HOST=selenium-hub
+      - HUB_PORT=4444
+
+
+
+
+
+
