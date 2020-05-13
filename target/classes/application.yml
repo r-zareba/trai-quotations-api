@@ -15,7 +15,7 @@ spring:
 ---
 spring:
   profiles: prod
-  
+
   data.mongodb:
     host: mongodb
     port: 27017
@@ -23,3 +23,14 @@ spring:
 
     task.scheduling.pool:
       size: 4
+---
+spring:
+  profiles: raspberry
+
+  data.mongodb:
+    host: mongodb
+    port: 27017
+    database: prices
+
+    task.scheduling.pool:
+      size: 1
