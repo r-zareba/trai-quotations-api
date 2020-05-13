@@ -3,19 +3,18 @@ package com.trai.quotations.price;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Sort;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.server.reactive.ServerHttpResponse;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 import reactor.core.publisher.Flux;
+import reactor.core.publisher.Mono;
+
+import java.security.Principal;
 
 
 @RestController
 @RequestMapping("/prices")
 public class PriceController {
-
-//    @Autowired
-//    private PriceService priceService;
-
-//    @Autowired
-//    private MongoDatabase mongoDatabase;
 
     @Autowired
     private PriceRepository priceRepository;
@@ -26,9 +25,12 @@ public class PriceController {
 
     }
 
+    @PreAuthorize("hasRole('USER')")
     @GetMapping(path = "/EURUSD", params = {"size"}, produces = "application/json")
-    public Flux<Eurusd> getPrices(final @RequestParam("size") int size) {
-        return priceRepository.findAll(Sort.by(Sort.Direction.DESC, "timestamp")).take(size);
+    public Flux<Eurusd> getPrices(final @RequestParam("size") int size, ServerHttpResponse response) {
+        return priceRepository.findAll(Sort.by(Sort.Direction.DESC, "timestamp"))
+                .take(size);
+
     }
 
     @PostMapping(path = "/{asset}", consumes = "application/json")
@@ -44,6 +46,14 @@ public class PriceController {
 //                .append("close", 1.1110);
 //
 //        collection.insertOne(doc);
+    }
+
+
+    @GetMapping("/")
+    public Mono<String> greet(Mono<Principal> principal) {
+        return principal
+                .map(Principal::getName)
+                .map(name -> String.format("Hello, %s", name));
     }
 
 }

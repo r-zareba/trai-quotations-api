@@ -1,0 +1,25 @@
+spring:
+  profiles:
+    active: dev
+---
+spring:
+  profiles: dev
+
+  data.mongodb:
+    host: localhost
+    port: 27017
+    database: prices
+
+  task.scheduling.pool:
+    size: 1
+---
+spring:
+  profiles: prod
+  
+  data.mongodb:
+    host: mongodb
+    port: 27017
+    database: prices
+
+    task.scheduling.pool:
+      size: 4

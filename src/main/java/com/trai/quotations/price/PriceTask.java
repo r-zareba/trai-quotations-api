@@ -34,30 +34,13 @@ public class PriceTask {
 
     private boolean useHeadless = false;
 
-//    @Autowired
-//    public void setPriceApi() {
-//        this.priceApi = new TradingViewApi("EURUSD");
-//    }
-
-//    @Bean
-//    public String eurusd() {
-//        return "EURUSD";
-//    }
-
-//    @Autowired
     public PriceTask() {
         priceApi = new TradingViewApi("EURUSD");
-//        priceApi.init();
-//        if (priceApi.isReady()) {
-//            this.priceApi = priceApi;
-//        }
     }
 
     @Scheduled(fixedRate = 200)
     public void reportCurrentTime() {
         prices.add(priceApi.getPrice());
-//        log.info("HEADLESS: {}", useHeadless);
-//        log.info(String.format("Time: %s --- %f", dateFormat.format(new Date()), priceApi.getPrice()));
     }
 
     @Scheduled(cron = "0 * * * * *")
