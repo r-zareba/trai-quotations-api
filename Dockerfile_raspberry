@@ -1,0 +1,3 @@
+FROM arm32v7/openjdk
+ADD target/trai-quotations.jar app.jar
+ENTRYPOINT ["java", "-jar", "-Dspring.profiles.active=raspberry", "app.jar"]
