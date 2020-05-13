@@ -1,6 +1,6 @@
 spring:
   profiles:
-    active: dev
+    active: prod
 ---
 spring:
   profiles: dev
@@ -33,4 +33,4 @@ spring:
     database: prices
 
     task.scheduling.pool:
-      size: 1
+      size: 4

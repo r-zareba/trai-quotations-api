@@ -52,7 +52,7 @@ public class PriceTask {
         Date timestamp = new Date(System.currentTimeMillis() - 60 * 1000);
 
         log.info(String.format("OHLC for %s : open: %f, high: %f, low: %f, close: %f",
-                dateFormat.format(new Date(System.currentTimeMillis() - 60 * 1000)), open, high, low, close));
+                dateFormat.format(timestamp), open, high, low, close));
 
         Eurusd ohlc = new Eurusd(open, high, low, close, timestamp);
         priceRepository.save(ohlc).subscribe();
