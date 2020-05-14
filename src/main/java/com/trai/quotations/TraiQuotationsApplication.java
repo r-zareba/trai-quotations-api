@@ -26,8 +26,8 @@ public class TraiQuotationsApplication {
 		MongoDatabase db = mongoClient.getDatabase("prices");
 		db.createCollection("EURUSD", new CreateCollectionOptions()
 				.capped(true)
-				.sizeInBytes(4096)
-				.maxDocuments(5));
+				.sizeInBytes(500000)
+				.maxDocuments(60));
 	}
 
 }
