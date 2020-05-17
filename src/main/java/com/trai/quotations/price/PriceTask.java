@@ -34,26 +34,26 @@ public class PriceTask {
 
     private boolean useHeadless = false;
 
-//    public PriceTask() {
-//        priceApi = new TradingViewApi("EURUSD");
-//    }
+    public PriceTask() {
+        priceApi = new TradingViewApi("EURUSD");
+    }
 
-//    @Scheduled(fixedRate = 200)
-//    public void reportCurrentTime() {
-//        prices.add(priceApi.getPrice());
-//    }
+    @Scheduled(fixedRate = 200)
+    public void reportCurrentTime() {
+        try {
+            prices.add(priceApi.getPrice());
+        } catch (Exception e) {
+            priceApi.close();
+            priceApi.init();
+        }
+    }
 
     @Scheduled(cron = "0 * * * * *")
     public void updateOHLC() {
-//        double open = prices.get(0);
-//        double high = Collections.max(prices);
-//        double low = Collections.min(prices);
-//        double close = prices.get(prices.size() - 1);
-
-        double open = 1.1111;
-        double high = 1.1122;
-        double low = 1.1133;
-        double close = 1.1144;
+        double open = prices.get(0);
+        double high = Collections.max(prices);
+        double low = Collections.min(prices);
+        double close = prices.get(prices.size() - 1);
         Date timestamp = new Date(System.currentTimeMillis() - 60 * 1000);
 
         log.info(String.format("OHLC for %s : open: %f, high: %f, low: %f, close: %f",

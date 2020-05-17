@@ -20,14 +20,15 @@ public class TraiQuotationsApplication {
 		SpringApplication.run(TraiQuotationsApplication.class, args);
 	}
 
-	@Bean
-	public void cappedCollection() {
-		MongoClient mongoClient = new MongoClient(new MongoClientURI("mongodb://mongodb:27017"));;
-		MongoDatabase db = mongoClient.getDatabase("prices");
-		db.createCollection("EURUSD", new CreateCollectionOptions()
-				.capped(true)
-				.sizeInBytes(500000)
-				.maxDocuments(60));
-	}
-
+//	@Bean
+//	public void cappedCollection() {
+//		MongoClient mongoClient = new MongoClient(new MongoClientURI("mongodb://mongodb:27017"));
+////		MongoClient mongoClient = new MongoClient();
+//		MongoDatabase db = mongoClient.getDatabase("prices");
+//		db.createCollection("EURUSD", new CreateCollectionOptions()
+//				.capped(true)
+//				.sizeInBytes(500000)
+//				.maxDocuments(240));
+//
+//	}
 }

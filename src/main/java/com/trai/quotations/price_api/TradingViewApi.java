@@ -1,11 +1,15 @@
 package com.trai.quotations.price_api;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.Capabilities;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.firefox.FirefoxOptions;
 import org.openqa.selenium.firefox.FirefoxProfile;
+import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.remote.RemoteWebDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
@@ -54,6 +58,7 @@ public class TradingViewApi implements PriceApi {
     }
 
     public void close() {
+        ready = false;
         webDriver.close();
     }
 
@@ -68,15 +73,28 @@ public class TradingViewApi implements PriceApi {
     }
 
     private void initDriver() throws MalformedURLException {
+
+//        System.setProperty("webdriver.gecko.driver", "geckodriver");
+
         FirefoxOptions options = new FirefoxOptions();
         options.setProfile(new FirefoxProfile());
         options.addPreference("dom.webnotifications.enabled", false);
-        options.setHeadless(useHeadless);
+        options.setHeadless(true);
 
 //        Capabilities firefoxCapabilities = DesiredCapabilities.firefox();
+//        Capabilities chromeCapabilities = DesiredCapabilities.chrome();
         this.webDriver = new RemoteWebDriver(new URL("http://selenium-hub:4444/wd/hub"), options);
+//        this.webDriver = new RemoteWebDriver(new URL("http://192.168.1.6:5557/wd/hub"), options);
+//        this.webDriver = new RemoteWebDriver(new URL("http://selenium-hub:4444/wd/hub"), chromeCapabilities);
+
 
 //        this.webDriver = new FirefoxDriver(options);/**/
+//        ChromeOptions options = new ChromeOptions();
+//        options.addArguments("--no-sandbox");
+//        options.addArguments("--disable-setuid-sandbox");
+
+//        this.webDriver = new ChromeDriver();
+//        this.webDriver = new FirefoxDriver();
 
     }
 

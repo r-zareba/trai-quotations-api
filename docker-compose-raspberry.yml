@@ -10,28 +10,33 @@ services:
       ENVIRONMENT: DOCKER
     links:
       - mongodb
-      - selenium-hub
+#      - selenium-hub
+
   mongodb:
     image: andresvidal/rpi3-mongodb3
     container_name: "mongodb"
     ports:
       - 27017:27017
 
-  selenium-hub:
-    image: deinchristian/rpi-selenium-hub
-    container_name: selenium-hub
-    ports:
-      - 4444:4444
+#  selenium-hub:
+#    restart: always
+#    image: deinchristian/rpi-selenium-hub
+#    container_name: selenium-hub
+#    ports:
+#      - 4444:4444
 
-  firefox:
-    image: deinchristian/rpi-selenium-node-firefox
-    volumes:
-      - /dev/shm:/dev/shm
-    depends_on:
-      - selenium-hub
-    environment:
-      - HUB_HOST=selenium-hub
-      - HUB_PORT=4444
+#  firefox:
+#    restart: always
+#    image: deinchristian/rpi-selenium-node-firefox
+#    shm_size: 128M
+#    volumes:
+#      - /dev/shm:/dev/shm
+#    depends_on:
+#      - selenium-hub
+#    environment:
+#      - HUB_HOST=selenium-hub
+#      - HUB_PORT=4444
+#      - START_XVFB=false
 
 
 
