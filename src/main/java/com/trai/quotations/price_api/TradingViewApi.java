@@ -26,7 +26,7 @@ public class TradingViewApi implements PriceApi {
     private static final Logger log = LoggerFactory.getLogger(TradingViewApi.class);
 
     private static String baseUrl = "https://www.tradingview.com/symbols/";
-    private static String priceXPath = "/html/body/div[2]/div[4]/div/header/div/div[3]/div[1]/div/div/div/div[1]/div[1]";
+    private static String priceXPath = "/html/body/div[2]/div[5]/div/header/div/div[3]/div[1]/div/div/div/div[1]/div[1]";
 
     private final String asset;
     private String assetUrl;
@@ -36,18 +36,24 @@ public class TradingViewApi implements PriceApi {
 
     private boolean useHeadless;
 
+    public TradingViewApi(String asset) {
+        this.asset = asset;
+        this.assetUrl = baseUrl + asset;
+//        init();
+    }
+
     public void init() {
         if (!ready) {
 
             try {
                 initDriver();
-            } catch (MalformedURLException e) {
+            } catch (Exception e) {
                 log.info("\n\nweb driver not initialized\n\n");
             }
 
             setPriceElement();
             ready = true;
-            log.info("INITIALIZED ! {}", this);
+            log.info("INITIALIZED ! {}", this.asset);
         }
     }
 
@@ -60,12 +66,6 @@ public class TradingViewApi implements PriceApi {
     public void close() {
         ready = false;
         webDriver.close();
-    }
-
-    public TradingViewApi(String asset) {
-        this.asset = asset;
-        this.assetUrl = baseUrl + asset;
-        init();
     }
 
     public boolean isReady() {
@@ -83,7 +83,8 @@ public class TradingViewApi implements PriceApi {
 
 //        Capabilities firefoxCapabilities = DesiredCapabilities.firefox();
 //        Capabilities chromeCapabilities = DesiredCapabilities.chrome();
-        this.webDriver = new RemoteWebDriver(new URL("http://selenium-hub:4444/wd/hub"), options);
+//        this.webDriver = new RemoteWebDriver(new URL("http://selenium-hub:4444/wd/hub"), options);
+        this.webDriver = new FirefoxDriver(options);
 //        this.webDriver = new RemoteWebDriver(new URL("http://192.168.1.6:5557/wd/hub"), options);
 //        this.webDriver = new RemoteWebDriver(new URL("http://selenium-hub:4444/wd/hub"), chromeCapabilities);
 

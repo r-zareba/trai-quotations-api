@@ -12,6 +12,9 @@ spring:
 
   task.scheduling.pool:
     size: 4
+
+  headless: hello
+
 ---
 spring:
   profiles: prod
@@ -21,9 +24,10 @@ spring:
     port: 27017
     database: prices
 
-    task.scheduling.pool:
+  task.scheduling.pool:
       size: 4
 ---
+
 spring:
   profiles: raspberry
 
@@ -32,5 +36,5 @@ spring:
     port: 27017
     database: prices
 
-    task.scheduling.pool:
+  task.scheduling.pool:
       size: 4

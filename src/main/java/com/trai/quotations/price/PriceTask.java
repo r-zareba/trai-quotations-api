@@ -1,5 +1,6 @@
 package com.trai.quotations.price;
 
+import com.trai.quotations.Config;
 import com.trai.quotations.price_api.PriceApi;
 import com.trai.quotations.price_api.TradingViewApi;
 import org.openqa.selenium.WebDriver;
@@ -27,19 +28,27 @@ public class PriceTask {
     private static final SimpleDateFormat dateFormat = new SimpleDateFormat("HH:mm:ss");
 
     @Autowired
+    private Config config;
+
+    @Autowired
     private PriceRepository priceRepository;
 
+
     private PriceApi priceApi;
+
+
     private List<Double> prices = new ArrayList<>();
 
-    private boolean useHeadless = false;
+//    @Value("${spring.headless}")
+//    private boolean headless;
 
     public PriceTask() {
         priceApi = new TradingViewApi("EURUSD");
+        priceApi.init();
     }
 
     @Scheduled(fixedRate = 200)
-    public void reportCurrentTime() {
+    public void eurusdPriceRead() {
         try {
             prices.add(priceApi.getPrice());
         } catch (Exception e) {
