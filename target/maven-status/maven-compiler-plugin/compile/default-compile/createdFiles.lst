@@ -1,9 +1,9 @@
 com/trai/quotations/security/User.class
 com/trai/quotations/security/SecurityConfig.class
 com/trai/quotations/price/Eurusd.class
+com/trai/quotations/Config.class
 com/trai/quotations/price/PriceTask.class
 com/trai/quotations/exception/AccessDeniedError.class
-com/trai/quotations/price/PriceService.class
 com/trai/quotations/price/Price.class
 com/trai/quotations/price_api/TradingViewApi.class
 com/trai/quotations/price_api/PriceApi.class

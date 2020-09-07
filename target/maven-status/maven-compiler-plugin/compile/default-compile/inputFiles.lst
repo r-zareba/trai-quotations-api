@@ -1,4 +1,3 @@
-/Users/kq794tb/Desktop/trai-quotations/trai-quotations-api/src/main/java/com/trai/quotations/price_api/PriceApiConfig.java
 /Users/kq794tb/Desktop/trai-quotations/trai-quotations-api/src/main/java/com/trai/quotations/TraiQuotationsApplication.java
 /Users/kq794tb/Desktop/trai-quotations/trai-quotations-api/src/main/java/com/trai/quotations/price_api/PriceApi.java
 /Users/kq794tb/Desktop/trai-quotations/trai-quotations-api/src/main/java/com/trai/quotations/price/PriceController.java
@@ -7,9 +6,9 @@
 /Users/kq794tb/Desktop/trai-quotations/trai-quotations-api/src/main/java/com/trai/quotations/exception/ApiExceptionHandler.java
 /Users/kq794tb/Desktop/trai-quotations/trai-quotations-api/src/main/java/com/trai/quotations/price/PriceRepository.java
 /Users/kq794tb/Desktop/trai-quotations/trai-quotations-api/src/main/java/com/trai/quotations/price/Eurusd.java
-/Users/kq794tb/Desktop/trai-quotations/trai-quotations-api/src/main/java/com/trai/quotations/price/PriceService.java
 /Users/kq794tb/Desktop/trai-quotations/trai-quotations-api/src/main/java/com/trai/quotations/price_api/TradingViewApi.java
 /Users/kq794tb/Desktop/trai-quotations/trai-quotations-api/src/main/java/com/trai/quotations/exception/AccessDeniedError.java
+/Users/kq794tb/Desktop/trai-quotations/trai-quotations-api/src/main/java/com/trai/quotations/Config.java
 /Users/kq794tb/Desktop/trai-quotations/trai-quotations-api/src/main/java/com/trai/quotations/security/SecurityConfig.java
 /Users/kq794tb/Desktop/trai-quotations/trai-quotations-api/src/main/java/com/trai/quotations/security/UserRepository.java
 /Users/kq794tb/Desktop/trai-quotations/trai-quotations-api/src/main/java/com/trai/quotations/security/User.java
